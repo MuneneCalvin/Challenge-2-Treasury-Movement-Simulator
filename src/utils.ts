@@ -1,4 +1,4 @@
-import { Account, FXRate } from './types';
+import { FXRate } from './types';
 
 export const fxRates: FXRate[] = [
   // USD to others

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Account, Transaction } from './types';
 import { AccountCard } from './components/AccountCard';
 import { TransferModal } from './components/TransferModal';

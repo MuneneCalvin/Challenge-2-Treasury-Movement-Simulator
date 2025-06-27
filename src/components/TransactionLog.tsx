@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Transaction, Account } from '../types';
 import { formatCurrency, getCurrencyColor } from '../utils';
-import { ArrowRight, Filter, Calendar, Clock, CheckCircle, ExternalLink } from 'lucide-react';
+import { ArrowRight, Filter, Clock, CheckCircle, ExternalLink } from 'lucide-react';
 
 interface TransactionLogProps {
   transactions: Transaction[];
