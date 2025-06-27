@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treasury Movement Simulator - Product Write-up</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #1f2937;
+            background: #ffffff;
+            padding: 40px;
+            max-width: 210mm;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #3b82f6;
+            padding-bottom: 20px;
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1e40af;
+            margin-bottom: 8px;
+        }
+        
+        .header p {
+            font-size: 16px;
+            color: #6b7280;
+            font-weight: 500;
+        }
+        
+        .section {
+            margin-bottom: 25px;
+        }
+        
+        .section h2 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1e40af;
+            margin-bottom: 12px;
+            border-left: 4px solid #3b82f6;
+            padding-left: 12px;
+        }
+        
+        .section p {
+            font-size: 14px;
+            margin-bottom: 10px;
+            text-align: justify;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 15px;
+        }
+        
+        .feature-category {
+            background: #f8fafc;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 3px solid #10b981;
+        }
+        
+        .feature-category h3 {
+            font-size: 14px;
+            font-weight: 600;
+            color: #059669;
+            margin-bottom: 8px;
+        }
+        
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .feature-list li {
+            font-size: 12px;
+            margin-bottom: 4px;
+            padding-left: 12px;
+            position: relative;
+        }
+        
+        .feature-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #10b981;
+            font-weight: bold;
+        }
+        
+        .assumptions-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        
+        .assumption-card {
+            background: #fef3c7;
+            padding: 12px;
+            border-radius: 6px;
+            border: 1px solid #f59e0b;
+        }
+        
+        .assumption-card h4 {
+            font-size: 12px;
+            font-weight: 600;
+            color: #92400e;
+            margin-bottom: 6px;
+        }
+        
+        .assumption-card p {
+            font-size: 11px;
+            color: #78350f;
+            margin: 0;
+        }
+        
+        .improvements-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        
+        .improvement-item {
+            background: #ede9fe;
+            padding: 12px;
+            border-radius: 6px;
+            border-left: 3px solid #8b5cf6;
+        }
+        
+        .improvement-item h4 {
+            font-size: 12px;
+            font-weight: 600;
+            color: #6d28d9;
+            margin-bottom: 6px;
+        }
+        
+        .improvement-item p {
+            font-size: 11px;
+            color: #5b21b6;
+            margin: 0;
+        }
+        
+        .tech-stack {
+            background: #f0f9ff;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #0ea5e9;
+            margin-top: 15px;
+        }
+        
+        .tech-stack h3 {
+            font-size: 14px;
+            font-weight: 600;
+            color: #0369a1;
+            margin-bottom: 8px;
+        }
+        
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+        
+        .tech-tag {
+            background: #0ea5e9;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 10px;
+            font-weight: 500;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #e5e7eb;
+            font-size: 12px;
+            color: #6b7280;
+        }
+        
+        @media print {
+            body {
+                padding: 20px;
+            }
+            
+            .section {
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Treasury Movement Simulator</h1>
+        <p>Multi-Currency Account Management & Transfer System</p>
+    </div>
+
+    <div class="section">
+        <h2>Project Scope</h2>
+        <p>
+            Built a comprehensive treasury management interface for handling multi-currency account operations across 10 virtual accounts spanning KES, USD, and NGN currencies. The system enables treasury teams to efficiently manage fund movements, track balances, and execute transfers with real-time foreign exchange conversions. The solution provides a production-ready interface with advanced features including live exchange rate calculations, transaction logging, and future-dated transfer scheduling.
+        </p>
+    </div>
+
+    <div class="section">
+        <h2>Features Implemented</h2>
+        <div class="features-grid">
+            <div class="feature-category">
+                <h3>Account Management</h3>
+                <ul class="feature-list">
+                    <li>10 pre-configured accounts across 3 currencies</li>
+                    <li>Account types: M-Pesa, Bank, Wallet</li>
+                    <li>Real-time balance tracking</li>
+                    <li>Currency-specific visual indicators</li>
+                    <li>Account summary dashboard</li>
+                </ul>
+            </div>
+            
+            <div class="feature-category">
+                <h3>Transfer Operations</h3>
+                <ul class="feature-list">
+                    <li>Intuitive transfer modal interface</li>
+                    <li>Live exchange rate conversion display</li>
+                    <li>Insufficient balance validation</li>
+                    <li>Optional transfer notes</li>
+                    <li>Future-dated transfer scheduling</li>
+                </ul>
+            </div>
+            
+            <div class="feature-category">
+                <h3>Transaction Management</h3>
+                <ul class="feature-list">
+                    <li>Comprehensive transaction logging</li>
+                    <li>Multi-filter system (currency, account, status)</li>
+                    <li>Transaction status tracking</li>
+                    <li>Exchange rate history</li>
+                    <li>Searchable transaction history</li>
+                </ul>
+            </div>
+            
+            <div class="feature-category">
+                <h3>User Experience</h3>
+                <ul class="feature-list">
+                    <li>Responsive design for all devices</li>
+                    <li>Real-time processing animations</li>
+                    <li>Success confirmation feedback</li>
+                    <li>Intuitive navigation patterns</li>
+                    <li>Professional visual design</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="tech-stack">
+            <h3>Technology Stack</h3>
+            <div class="tech-tags">
+                <span class="tech-tag">React 18</span>
+                <span class="tech-tag">TypeScript</span>
+                <span class="tech-tag">Tailwind CSS</span>
+                <span class="tech-tag">Vite</span>
+                <span class="tech-tag">Lucide Icons</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Key Assumptions Made</h2>
+        <div class="assumptions-grid">
+            <div class="assumption-card">
+                <h4>Exchange Rates</h4>
+                <p>Static FX rates used: USD/KES (129.50), USD/NGN (460.25), with inverse calculations for reverse conversions.</p>
+            </div>
+            
+            <div class="assumption-card">
+                <h4>Account Structure</h4>
+                <p>Pre-defined account naming convention (Type_Currency_Number) with realistic balance distributions across account types.</p>
+            </div>
+            
+            <div class="assumption-card">
+                <h4>Transaction Processing</h4>
+                <p>Immediate processing for regular transfers, UI-only simulation for future-dated transfers with status tracking.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Future Improvements</h2>
+        <div class="improvements-list">
+            <div class="improvement-item">
+                <h4>Real-time FX Integration</h4>
+                <p>Connect to live exchange rate APIs (e.g., XE, Fixer.io) for dynamic rate updates with rate change notifications and historical rate charts.</p>
+            </div>
+            
+            <div class="improvement-item">
+                <h4>Advanced Security</h4>
+                <p>Implement multi-factor authentication, transaction approval workflows, and audit trails for compliance requirements.</p>
+            </div>
+            
+            <div class="improvement-item">
+                <h4>Reporting & Analytics</h4>
+                <p>Add comprehensive reporting dashboard with transaction analytics, balance trends, and FX exposure analysis.</p>
+            </div>
+            
+            <div class="improvement-item">
+                <h4>Backend Integration</h4>
+                <p>Develop REST API with database persistence, real-time notifications, and integration with banking systems.</p>
+            </div>
+            
+            <div class="improvement-item">
+                <h4>Enhanced UX Features</h4>
+                <p>Add bulk transfer capabilities, transaction templates, recurring transfers, and mobile-optimized interface.</p>
+            </div>
+            
+            <div class="improvement-item">
+                <h4>Compliance & Risk</h4>
+                <p>Implement transaction limits, compliance checks, risk scoring, and automated regulatory reporting features.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p><strong>Treasury Movement Simulator</strong> | Built with modern web technologies for optimal performance and user experience</p>
+    </div>
+</body>
+</html>
